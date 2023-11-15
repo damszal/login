@@ -1,4 +1,4 @@
-import{Box, Button, Grid, Paper, TextField} from '@mui/material'
+import{Box, Container, Button, Grid, Paper, TextField} from '@mui/material'
 import './App.css'
 import { useState } from 'react';
 
@@ -16,22 +16,34 @@ function App() {
   };
 
   return (
-    <Box 
-    display="flex" 
-    alignItems="center" 
-    height="100vh">
-      <Grid
+    <Container maxWidth="sm">
+     <Grid
       container
-      direction="row"
+      height="100vh"
+      direction="column"
       justifyContent="center"
       alignItems="center"
-        spacing={2}
+      spacing={2}
       >
-        {/* <Paper elevation={3}> */}
+        <Grid 
+         item
+        >
+          <h1>
+            LOGIN
+          </h1>
+        </Grid>
+        <Grid 
+          item 
+        >
           <form
-          onSubmit={handleLogin}
+           onSubmit={handleLogin}
           >
-            <Grid item xs={12}
+            <Grid container
+               direction="column"
+               spacing={2}
+            >
+            <Grid 
+              item
             >
               <TextField 
                 required
@@ -44,32 +56,34 @@ function App() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                name="password"
-                label="Hasło"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                type="submit"
-              >
-                LOGIN
-              </Button>
-            </Grid>
-          </form>
-        {/* </Paper> */}
+          </Grid>
+          <Grid 
+            item 
+           >
+            <TextField
+              required
+              fullWidth
+              name="password"
+              label="Hasło"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              type="submit"
+            >
+              LOGIN
+            </Button>
+          </Grid>
+          </Grid>
+            </form>
+          </Grid>
       </Grid>
-
-    </Box>
+    </Container>
   )
 }
 
